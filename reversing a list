@@ -1,0 +1,5 @@
+(define reverse (lambda (ls) (
+		cond ((null? ls) '())
+		     (else (cons (reverse (cdr ls)) (car ls))) 									
+	
+)))
