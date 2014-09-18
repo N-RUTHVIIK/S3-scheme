@@ -1,0 +1,17 @@
+;;this is the sub-procedure to compare one element in A with all the elements in list B. INPUT-integer, OUTPUT-#t or #f
+(define check (lambda (n ls) (
+				cond ((null? ls) #f)
+						((not (= n (car ls))) (check n (cdr ls)))
+						(else #t))))
+
+
+
+
+
+;;this is main procedure (set-difference). it finds the set-difference of two given lists A & B. INPUT-two lists A & B, OUTPUT-list
+(define set-difference ( lambda (ls1 ls2) (
+					cond ((null? ls1) '())
+						((null? ls2) ls1)
+						((check (car ls1) ls2) (set-difference (cdr ls1) ls2))
+                                                (else (cons (car ls1) (set-difference (cdr ls1) ls2))))))
+						 
