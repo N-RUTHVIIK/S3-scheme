@@ -1,0 +1,9 @@
+(define merge-sort
+(lambda (ls1 ls2)
+(cond ((null? ls1) ls2)
+((null? ls2) ls1)
+(
+cond ((< (car ls1) (car ls2)) (cons (car ls1) (merge-sort (cdr ls1) ls2)))
+((< (car ls2) (car ls1)) (cons (car ls2) (merge-sort (cdr ls1) ls2)))
+((= (car ls1) (car ls2)) (cons (car ls1) (merge-sort (cdr ls1) (cdr ls2))))
+))))
