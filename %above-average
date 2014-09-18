@@ -1,0 +1,30 @@
+(define list-of-marks( lambda (ls) (
+				     cond ((null? ls) '())
+					  (else (cons (cdar ls) (list-of-marks (cdr ls))))
+)))
+
+(define sum-of-marks( lambda (ls) (
+				     cond ((null? ls) 0)
+					  (else (+ (car ls) (sum-of-marks (cdr ls))))
+)))
+
+(define length-of-list( lambda (ls) (
+				      cond ((null? ls) 0)
+					   (else (+ 1 (length-of-list (cdr ls))))
+)))
+
+(define average( lambda (ls) (
+				cond ((null? ls) 0)
+				     (else (/ (sum-of-marks ls) (length-of-list ls)))
+)))
+
+(define above-avg-count( lambda (ls) (
+				       cond ((null? ls) 0)
+					    ((> (car ls) (average ls)) (+ 1 (above-avg-count (cdr ls))))
+					    (else (above-avg-count (cdr ls)))
+)))
+
+(define %above-average( lambda (ls) (
+				      cond ((null? ls) 0)
+					   (else (/ (* 100 (above-avg-count (list-of-marks ls))) (length-of-list ls)))
+)))
